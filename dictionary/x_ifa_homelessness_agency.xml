@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Agency" max_length="40" name="x_ifa_homelessness_agency" type="collection">
+        <element display="true" label="Agency Name" mandatory="true" max_length="200" name="agencyname" type="string"/>
+        <element label="Agency City" max_length="50" name="agency_city" type="string"/>
+        <element label="Agency State Abbrv" max_length="2" name="agency_state_abbrv" type="string"/>
+        <element label="Agency Street Address" max_length="100" name="agency_street_address" type="string"/>
+        <element label="Agency Zip Code" max_length="10" name="agency_zip_code" type="string"/>
+        <element label="Contract Number" max_length="50" name="contract_number" type="string"/>
+        <element label="Data Collection System" max_length="50" name="data_collection_system" type="string"/>
+        <element label="Legal Name" max_length="400" name="legal_name" type="string"/>
+    </element>
+</database>

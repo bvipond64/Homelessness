@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Program" max_length="40" name="x_ifa_homelessness_program" type="collection">
+        <element label="Program Code" max_length="20" name="program_code" type="string"/>
+        <element display="true" label="Program Description" max_length="200" name="program_description" type="string"/>
+    </element>
+</database>

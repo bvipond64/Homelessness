@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Program Fund Year" max_length="40" name="x_ifa_homelessness_program_fund_year" type="collection">
+        <element display="true" label="Award Date" max_length="40" name="award_date" type="glide_date"/>
+        <element label="Contract Submission Deadline" max_length="40" name="contract_submission_deadline" type="glide_date"/>
+        <element label="Expenditure Deadline" max_length="40" name="expenditure_deadline" type="glide_date"/>
+        <element label="Fund Year" max_length="40" name="fund_year" type="integer"/>
+        <element default="0" label="HUD Authorized Amount" max_length="40" name="hud_authorized_amount" type="currency"/>
+        <element label="HUD Grant Nbr" max_length="50" name="hud_grant_nbr" type="string"/>
+        <element label="IDIS Admin Number" max_length="50" name="idis_admin_number" type="string"/>
+        <element label="Program" max_length="32" name="program" reference="x_ifa_homelessness_program" type="reference"/>
+        <index name="index">
+            <element name="program"/>
+        </index>
+    </element>
+</database>

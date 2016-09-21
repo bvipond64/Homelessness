@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Agency Award" max_length="40" name="x_ifa_homelessness_agency_award" type="collection">
+        <element label="Agency" max_length="32" name="agency" reference="x_ifa_homelessness_agency" type="reference"/>
+        <element label="Audit Due Date" max_length="40" name="audit_due_date" type="glide_date"/>
+        <element label="Audit Findings" max_length="255" name="audit_findings" type="string_full_utf8"/>
+        <element label="Audit Submitted Date" max_length="40" name="audit_submitted_date" type="glide_date"/>
+        <element label="Award Accepted Date" max_length="40" name="award_accepted_date" type="glide_date"/>
+        <element label="Award Offered Date" max_length="40" name="award_offered_date" type="glide_date"/>
+        <element label="Contract Number" max_length="50" name="contract_number" type="string"/>
+        <element label="Contract Submission Date" max_length="40" name="contract_submission_date" type="glide_date"/>
+        <element display="true" label="Grant Amount" max_length="40" name="grant_amount" type="currency"/>
+        <element label="Grant Number" max_length="50" name="grant_number" type="string"/>
+        <element label="Grant Year" max_length="40" name="grant_year" type="integer"/>
+        <element label="Match Required Amount" max_length="40" name="match_required_amount" type="currency"/>
+        <element label="Program" mandatory="true" max_length="20" name="program_code" reference="x_ifa_homelessness_program" type="reference"/>
+        <index name="index">
+            <element name="agency"/>
+        </index>
+    </element>
+</database>

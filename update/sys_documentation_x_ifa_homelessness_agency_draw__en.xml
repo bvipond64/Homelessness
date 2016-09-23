@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="" label="Agency Draw" language="en" table="x_ifa_homelessness_agency_draw">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element/>
+            <help/>
+            <hint/>
+            <label>Agency Draw</label>
+            <language>en</language>
+            <name>x_ifa_homelessness_agency_draw</name>
+            <plural>Agency Draws</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-09-23 20:49:40</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>fefb7169134a2a00293176666144b0b2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Agency Draw</sys_name>
+            <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+            <sys_update_name>sys_documentation_x_ifa_homelessness_agency_draw__en</sys_update_name>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-09-23 20:49:40</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

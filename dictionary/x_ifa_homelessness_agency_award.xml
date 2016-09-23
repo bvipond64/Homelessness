@@ -3,16 +3,27 @@
     <element label="Agency Award" max_length="40" name="x_ifa_homelessness_agency_award" type="collection">
         <element label="Agency" max_length="32" name="agency" reference="x_ifa_homelessness_agency" type="reference"/>
         <element label="Audit Due Date" max_length="40" name="audit_due_date" type="glide_date"/>
-        <element label="Audit Findings" max_length="255" name="audit_findings" type="string_full_utf8"/>
+        <element label="Audit Findings" max_length="4000" name="audit_findings" type="journal"/>
         <element label="Audit Submitted Date" max_length="40" name="audit_submitted_date" type="glide_date"/>
+        <element label="Audit Type" max_length="50" name="audit_type" type="string"/>
         <element label="Award Accepted Date" max_length="40" name="award_accepted_date" type="glide_date"/>
         <element label="Award Offered Date" max_length="40" name="award_offered_date" type="glide_date"/>
+        <element default="False" label="Conference Call First Quarter" max_length="40" name="conference_call_first_quarter" type="boolean"/>
+        <element default="False" label=" &#9; Conference Call Fourth Quarter" max_length="40" name="conference_call_fourth_quarter" type="boolean"/>
+        <element default="False" label="  Conference Call Second Quarter" max_length="40" name="conference_call_second_quarter" type="boolean"/>
+        <element default="False" label=" &#9; Conference Call Third Quarter" max_length="40" name="conference_call_third_quarter" type="boolean"/>
         <element label="Contract Number" max_length="50" name="contract_number" type="string"/>
         <element label="Contract Submission Date" max_length="40" name="contract_submission_date" type="glide_date"/>
+        <element label="Desk Audit Notes" max_length="4000" name="desk_audit_notes" type="journal"/>
+        <element label="Findings Response Received Date" max_length="40" name="findings_response_received_date" type="glide_date"/>
         <element display="true" label="Grant Amount" max_length="40" name="grant_amount" type="currency"/>
         <element label="Grant Number" max_length="50" name="grant_number" type="string"/>
         <element label="Grant Year" max_length="40" name="grant_year" type="integer"/>
         <element label="Match Required Amount" max_length="40" name="match_required_amount" type="currency"/>
+        <element label="Monitoring Findings Ind" max_length="40" name="monitoring_findings_ind" type="boolean"/>
+        <element label="Monitoring Letter Sent Date" max_length="40" name="monitoring_letter_sent_date" type="glide_date"/>
+        <element label="Monitoring Notes" max_length="4000" name="monitoring_notes" type="journal"/>
+        <element label="On Site Monitoring Visit Date" max_length="40" name="on_site_monitoring_visit_date" type="glide_date"/>
         <element label="Program" mandatory="true" max_length="20" name="program_code" reference="x_ifa_homelessness_program" type="reference"/>
         <index name="index">
             <element name="agency"/>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Agency Draw" max_length="40" name="x_ifa_homelessness_agency_draw" type="collection">
+        <element label="Agency Award" max_length="32" name="agency_award" reference="x_ifa_homelessness_agency_award" type="reference"/>
+        <element label="Approved In IDIS Date" max_length="40" name="approved_in_idis_date" type="glide_date"/>
+        <element label="Draw Amount" max_length="40" name="draw_amount" type="currency"/>
+        <element label="Entered In IDIS Date" max_length="40" name="entered_in_idis_date" type="glide_date"/>
+        <element display="true" label="IDIS Voucher Number" max_length="20" name="idis_voucher_number" type="string"/>
+        <element label="Management Approval Date" max_length="40" name="management_approval_date" type="glide_date"/>
+        <element label="Program Fund Year" max_length="32" name="program_fund_year" reference="x_ifa_homelessness_program_fund_year" type="reference"/>
+        <element label="Sent To Accounting Date" max_length="40" name="sent_to_accounting_date" type="glide_date"/>
+        <element default="0" label="Sequence Number" max_length="40" name="sequence_number" type="integer"/>
+        <index name="index">
+            <element name="agency_award"/>
+        </index>
+        <index name="index2">
+            <element name="program_fund_year"/>
+        </index>
+    </element>
+</database>

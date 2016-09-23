@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Agency Match" max_length="40" name="x_ifa_homelessness_agency_match" type="collection">
+        <element label="Agency Award" max_length="32" name="agency_award" reference="x_ifa_homelessness_agency_award" type="reference"/>
+        <element display="true" label="Amount Allocated" max_length="40" name="amount_allocated" type="currency"/>
+        <element label="Amount Documented" max_length="40" name="amount_documented" type="currency"/>
+        <element label="Expiration Date" max_length="40" name="expiration_date" type="glide_date"/>
+        <element label="Match Source" max_length="200" name="match_source" type="string"/>
+        <element label="Match Type" max_length="32" name="match_type" reference="x_ifa_homelessness_match_type" type="reference"/>
+        <index name="index">
+            <element name="agency_award"/>
+        </index>
+        <index name="index2">
+            <element name="match_type"/>
+        </index>
+    </element>
+</database>

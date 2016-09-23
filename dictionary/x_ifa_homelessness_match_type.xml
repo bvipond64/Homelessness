@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Match Type" max_length="40" name="x_ifa_homelessness_match_type" type="collection">
+        <element label="Match Type Desc" max_length="100" name="match_type_desc" type="string"/>
+        <element display="true" label="Program" max_length="32" name="program" reference="x_ifa_homelessness_program" type="reference"/>
+        <index name="index">
+            <element name="program"/>
+        </index>
+    </element>
+</database>

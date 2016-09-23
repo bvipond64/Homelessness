@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Agency Draw Item" max_length="40" name="x_ifa_homelessness_agency_draw_item" type="collection">
+        <element label="Agency Draw" max_length="32" name="agency_draw" reference="x_ifa_homelessness_agency_draw" type="reference"/>
+        <element label="Budget Item" max_length="32" name="budget_item" reference="x_ifa_homelessness_budget_item" type="reference"/>
+        <element display="true" label="Item Amount" max_length="40" name="item_amount" type="currency"/>
+        <index name="index">
+            <element name="budget_item"/>
+        </index>
+        <index name="index2">
+            <element name="agency_draw"/>
+        </index>
+    </element>
+</database>

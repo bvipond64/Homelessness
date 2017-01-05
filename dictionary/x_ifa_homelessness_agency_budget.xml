@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Agency Budget" max_length="40" name="x_ifa_homelessness_agency_budget" type="collection">
-        <element label="Agency Award" max_length="32" name="agency_award" reference="x_ifa_homelessness_agency_award" type="reference"/>
-        <element label="Budget Amount" max_length="40" name="budget_amount" type="currency"/>
-        <element label="Budget Effective Date" max_length="40" name="budget_effective_date" type="glide_date"/>
-        <element label="Budget Item" max_length="32" name="budget_item" reference="x_ifa_homelessness_budget_item" type="reference"/>
-        <element display="true" label="IDIS Activity Id" max_length="20" name="idis_activity_id" type="string"/>
+        <element label="Agency Award" mandatory="true" max_length="32" name="agency_award" reference="x_ifa_homelessness_agency_award" type="reference"/>
+        <element label="Budget Amount Available" max_length="20" name="budget_amount_available" read_only="true" type="currency"/>
+        <element label="Budget Drawn Amount" max_length="20" name="budget_drawn_amount" read_only="true" type="currency"/>
+        <element display="true" label="Budget Effective Date" max_length="40" name="budget_effective_date" type="glide_date"/>
+        <element default="0" label="Budget Total Amount" mandatory="true" max_length="40" name="budget_total_amount" type="currency"/>
         <index name="index">
             <element name="agency_award"/>
-        </index>
-        <index name="index2">
-            <element name="budget_item"/>
         </index>
     </element>
 </database>

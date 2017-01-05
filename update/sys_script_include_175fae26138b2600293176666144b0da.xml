@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_ifa_homelessness.ref_qual_get_agency_budget_item</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>ref_qual_get_agency_budget_item</name>
+        <script><![CDATA[function ref_qual_get_agency_budget_item() {
+	
+	//gs.addInfoMessage(current.agency_draw.agency_award.program_code.program_code);
+	
+	var result = 'sys_idIN';
+	var ids1 = [];
+	
+	var budget = new GlideRecord('x_ifa_homelessness_agency_budget');  
+	budget.addQuery('agency_award.sys_id', current.agency_draw.agency_award.sys_id); 
+	budget.orderByDesc('budget_effective_date');  
+	budget.setLimit(1);  
+	budget.query(); 
+	
+	if (budget.next()) {  
+     	var b_item = new GlideRecord('x_ifa_homelessness_agency_budget_item');
+		b_item.addQuery('agency_budget.sys_id',budget.sys_id);
+		b_item.query();
+		while (b_item.next()){
+			ids1.push('' + b_item.budget_item.sys_id);
+		}
+	}	
+	
+	//gs.addInfoMessage(ids1.toString());
+	return result + ids1.toString();
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-11-15 20:22:57</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>175fae26138b2600293176666144b0da</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>ref_qual_get_agency_budget_item</sys_name>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_script_include_175fae26138b2600293176666144b0da</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-15 23:12:26</sys_updated_on>
+    </sys_script_include>
+</record_update>

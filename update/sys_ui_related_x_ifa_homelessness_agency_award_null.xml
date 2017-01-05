@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_related sys_domain="global" table="x_ifa_homelessness_agency_award" version="2" view="">
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Agency Award - Default view" name="x_ifa_homelessness_agency_award" related_list="NULL" sys_domain="global" view="Default view">f53c4e40136bea00293176666144b0bd</list_id>
+            <order_by/>
+            <position>0</position>
+            <related_list>x_ifa_homelessness_agency_budget.agency_award</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-02 19:43:54</sys_created_on>
+            <sys_id>3d3c4e40136bea00293176666144b0bd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-02 19:43:54</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Agency Award - Default view" name="x_ifa_homelessness_agency_award" related_list="NULL" sys_domain="global" view="Default view">f53c4e40136bea00293176666144b0bd</list_id>
+            <order_by/>
+            <position>1</position>
+            <related_list>x_ifa_homelessness_agency_draw.agency_award</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-02 19:43:54</sys_created_on>
+            <sys_id>313cc680136bea00293176666144b069</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-02 19:43:54</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Agency Award - Default view" name="x_ifa_homelessness_agency_award" related_list="NULL" sys_domain="global" view="Default view">f53c4e40136bea00293176666144b0bd</list_id>
+            <order_by/>
+            <position>2</position>
+            <related_list>x_ifa_homelessness_agency_match.agency_award</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-02 19:43:54</sys_created_on>
+            <sys_id>f13cc680136bea00293176666144b069</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-02 19:43:54</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Agency Award - Default view" name="x_ifa_homelessness_agency_award" related_list="NULL" sys_domain="global" view="Default view">f53c4e40136bea00293176666144b0bd</list_id>
+            <order_by/>
+            <position>3</position>
+            <related_list>x_ifa_homelessness_agency_grant_history.u_agency_award</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-02 19:43:54</sys_created_on>
+            <sys_id>b53cc680136bea00293176666144b069</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-02 19:43:54</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Agency Award - Default view" name="x_ifa_homelessness_agency_award" related_list="NULL" sys_domain="global" view="Default view">f53c4e40136bea00293176666144b0bd</list_id>
+            <order_by/>
+            <position>4</position>
+            <related_list>REL:b9edf0ca0a0a0b010035de2d6b579a03</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-02 19:43:54</sys_created_on>
+            <sys_id>793cc680136bea00293176666144b069</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-02 19:43:54</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list action="INSERT_OR_UPDATE">
+            <calculated_name>Agency Award - Default view</calculated_name>
+            <filter/>
+            <name>x_ifa_homelessness_agency_award</name>
+            <order_by/>
+            <position/>
+            <related_list/>
+            <sys_class_name>sys_ui_related_list</sys_class_name>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-02 19:43:54</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f53c4e40136bea00293176666144b0bd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Agency Award - Default view</sys_name>
+            <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+            <sys_update_name>sys_ui_related_x_ifa_homelessness_agency_award_null</sys_update_name>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-02 19:43:54</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_related_list>
+    </sys_ui_related>
+</record_update>

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Agency Draw Item" max_length="40" name="x_ifa_homelessness_agency_draw_item" type="collection">
-        <element label="Agency Draw" max_length="32" name="agency_draw" reference="x_ifa_homelessness_agency_draw" type="reference"/>
-        <element label="Budget Item" max_length="32" name="budget_item" reference="x_ifa_homelessness_budget_item" type="reference"/>
-        <element display="true" label="Item Amount" max_length="40" name="item_amount" type="currency"/>
+        <element label="Agency Draw" max_length="32" name="agency_draw" read_only="true" reference="x_ifa_homelessness_agency_draw" type="reference"/>
+        <element choice="1" display="true" label="Budget Item" mandatory="true" max_length="32" name="budget_item" reference="x_ifa_homelessness_budget_item" reference_cascade_rule="none" reference_qual="javascript:ref_qual_get_agency_budget_item()" type="reference" use_reference_qualifier="advanced">
+            <choice/>
+        </element>
+        <element default="0" label="Item Amount" mandatory="true" max_length="40" name="item_amount" type="currency"/>
         <index name="index">
             <element name="budget_item"/>
         </index>

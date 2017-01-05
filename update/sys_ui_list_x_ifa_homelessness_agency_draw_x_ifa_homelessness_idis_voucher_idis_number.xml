@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_list parent="x_ifa_homelessness_idis_voucher" relationship="" sys_domain="global" table="x_ifa_homelessness_agency_draw" version="2" view="idis_number">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>number</element>
+            <list_id display_value="x_ifa_homelessness_agency_draw" element="NULL" name="x_ifa_homelessness_agency_draw" parent="x_ifa_homelessness_idis_voucher" relationship="NULL" sys_domain="global" view="0230062c1337a200638e74c66144b047">21f0462c1337a200638e74c66144b0ab</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-16 18:27:23</sys_created_on>
+            <sys_id>65f0462c1337a200638e74c66144b0ab</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-16 18:27:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>agency_award.agency.agencyname</element>
+            <list_id display_value="x_ifa_homelessness_agency_draw" element="NULL" name="x_ifa_homelessness_agency_draw" parent="x_ifa_homelessness_idis_voucher" relationship="NULL" sys_domain="global" view="0230062c1337a200638e74c66144b047">21f0462c1337a200638e74c66144b0ab</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-16 18:27:23</sys_created_on>
+            <sys_id>e5f0462c1337a200638e74c66144b0ab</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-16 18:27:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sequence_number</element>
+            <list_id display_value="x_ifa_homelessness_agency_draw" element="NULL" name="x_ifa_homelessness_agency_draw" parent="x_ifa_homelessness_idis_voucher" relationship="NULL" sys_domain="global" view="0230062c1337a200638e74c66144b047">21f0462c1337a200638e74c66144b0ab</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-16 18:27:23</sys_created_on>
+            <sys_id>69f0462c1337a200638e74c66144b0ab</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-16 18:27:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>draw_amount</element>
+            <list_id display_value="x_ifa_homelessness_agency_draw" element="NULL" name="x_ifa_homelessness_agency_draw" parent="x_ifa_homelessness_idis_voucher" relationship="NULL" sys_domain="global" view="0230062c1337a200638e74c66144b047">21f0462c1337a200638e74c66144b0ab</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-16 18:27:23</sys_created_on>
+            <sys_id>e9f0462c1337a200638e74c66144b0ab</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-16 18:27:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>idis_voucher_number.voucher_number</element>
+            <list_id display_value="x_ifa_homelessness_agency_draw" element="NULL" name="x_ifa_homelessness_agency_draw" parent="x_ifa_homelessness_idis_voucher" relationship="NULL" sys_domain="global" view="0230062c1337a200638e74c66144b047">21f0462c1337a200638e74c66144b0ab</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-16 18:27:23</sys_created_on>
+            <sys_id>6df0462c1337a200638e74c66144b0ab</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-16 18:27:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>received_by_ifa_date</element>
+            <list_id display_value="x_ifa_homelessness_agency_draw" element="NULL" name="x_ifa_homelessness_agency_draw" parent="x_ifa_homelessness_idis_voucher" relationship="NULL" sys_domain="global" view="0230062c1337a200638e74c66144b047">21f0462c1337a200638e74c66144b0ab</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-16 18:27:23</sys_created_on>
+            <sys_id>edf0462c1337a200638e74c66144b0ab</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-16 18:27:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>entered_in_idis_date</element>
+            <list_id display_value="x_ifa_homelessness_agency_draw" element="NULL" name="x_ifa_homelessness_agency_draw" parent="x_ifa_homelessness_idis_voucher" relationship="NULL" sys_domain="global" view="0230062c1337a200638e74c66144b047">21f0462c1337a200638e74c66144b0ab</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>6</position>
+            <sum>false</sum>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-16 18:27:23</sys_created_on>
+            <sys_id>61f0462c1337a200638e74c66144b0ac</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-16 18:27:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sent_to_accounting_date</element>
+            <list_id display_value="x_ifa_homelessness_agency_draw" element="NULL" name="x_ifa_homelessness_agency_draw" parent="x_ifa_homelessness_idis_voucher" relationship="NULL" sys_domain="global" view="0230062c1337a200638e74c66144b047">21f0462c1337a200638e74c66144b0ab</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>7</position>
+            <sum>false</sum>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-16 18:27:23</sys_created_on>
+            <sys_id>e1f0462c1337a200638e74c66144b0ac</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-16 18:27:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_reporting_months</element>
+            <list_id display_value="x_ifa_homelessness_agency_draw" element="NULL" name="x_ifa_homelessness_agency_draw" parent="x_ifa_homelessness_idis_voucher" relationship="NULL" sys_domain="global" view="0230062c1337a200638e74c66144b047">21f0462c1337a200638e74c66144b0ab</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>8</position>
+            <sum>false</sum>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-16 18:27:23</sys_created_on>
+            <sys_id>65f0462c1337a200638e74c66144b0ac</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-16 18:27:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>management_approval_date</element>
+            <list_id display_value="x_ifa_homelessness_agency_draw" element="NULL" name="x_ifa_homelessness_agency_draw" parent="x_ifa_homelessness_idis_voucher" relationship="NULL" sys_domain="global" view="0230062c1337a200638e74c66144b047">21f0462c1337a200638e74c66144b0ab</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>9</position>
+            <sum>false</sum>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-16 18:27:23</sys_created_on>
+            <sys_id>e5f0462c1337a200638e74c66144b0ac</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-16 18:27:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>approved_in_idis_date</element>
+            <list_id display_value="x_ifa_homelessness_agency_draw" element="NULL" name="x_ifa_homelessness_agency_draw" parent="x_ifa_homelessness_idis_voucher" relationship="NULL" sys_domain="global" view="0230062c1337a200638e74c66144b047">21f0462c1337a200638e74c66144b0ab</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>10</position>
+            <sum>false</sum>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-16 18:27:23</sys_created_on>
+            <sys_id>69f0462c1337a200638e74c66144b0ac</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-16 18:27:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_ifa_homelessness_agency_draw</name>
+            <parent>x_ifa_homelessness_idis_voucher</parent>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-16 18:27:23</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>21f0462c1337a200638e74c66144b0ab</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_ifa_homelessness_agency_draw</sys_name>
+            <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+            <sys_update_name>sys_ui_list_x_ifa_homelessness_agency_draw_x_ifa_homelessness_idis_voucher_idis_number</sys_update_name>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-16 18:27:23</sys_updated_on>
+            <sys_user/>
+            <view display_value="IDIS Number" name="idis_number">0230062c1337a200638e74c66144b047</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_section caption="On Site Monitoring" section_id="a4cdcaad134a2a00293176666144b01a" sys_domain="global" table="x_ifa_homelessness_agency_award" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>on_site_monitoring_visit_date</element>
+            <position>0</position>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-11-30 21:53:56</sys_created_on>
+            <sys_id>c7c61827135faa00293176666144b0b0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="On Site Monitoring" display_value="On Site Monitoring" name="x_ifa_homelessness_agency_award" sys_domain="global" view="Default view">a4cdcaad134a2a00293176666144b01a</sys_ui_section>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-11-30 21:53:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>monitoring_letter_sent_date</element>
+            <position>1</position>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-11-30 21:53:56</sys_created_on>
+            <sys_id>4bc61827135faa00293176666144b0b0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="On Site Monitoring" display_value="On Site Monitoring" name="x_ifa_homelessness_agency_award" sys_domain="global" view="Default view">a4cdcaad134a2a00293176666144b01a</sys_ui_section>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-11-30 21:53:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>monitoring_findings_ind</element>
+            <position>2</position>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-11-30 21:53:56</sys_created_on>
+            <sys_id>cbc61827135faa00293176666144b0b0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="On Site Monitoring" display_value="On Site Monitoring" name="x_ifa_homelessness_agency_award" sys_domain="global" view="Default view">a4cdcaad134a2a00293176666144b01a</sys_ui_section>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-11-30 21:53:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>3</position>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-11-30 21:53:56</sys_created_on>
+            <sys_id>4fc61827135faa00293176666144b0b0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="On Site Monitoring" display_value="On Site Monitoring" name="x_ifa_homelessness_agency_award" sys_domain="global" view="Default view">a4cdcaad134a2a00293176666144b01a</sys_ui_section>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-11-30 21:53:56</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_monitoring_findings_received_date</element>
+            <position>4</position>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-11-30 21:53:56</sys_created_on>
+            <sys_id>cfc61827135faa00293176666144b0b0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="On Site Monitoring" display_value="On Site Monitoring" name="x_ifa_homelessness_agency_award" sys_domain="global" view="Default view">a4cdcaad134a2a00293176666144b01a</sys_ui_section>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-11-30 21:53:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>findings_response_received_date</element>
+            <position>5</position>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-11-30 21:53:56</sys_created_on>
+            <sys_id>43c61827135faa00293176666144b0b1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="On Site Monitoring" display_value="On Site Monitoring" name="x_ifa_homelessness_agency_award" sys_domain="global" view="Default view">a4cdcaad134a2a00293176666144b01a</sys_ui_section>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-11-30 21:53:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_monitoring_findings_resolved_date</element>
+            <position>6</position>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-11-30 21:53:56</sys_created_on>
+            <sys_id>c3c61827135faa00293176666144b0b1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="On Site Monitoring" display_value="On Site Monitoring" name="x_ifa_homelessness_agency_award" sys_domain="global" view="Default view">a4cdcaad134a2a00293176666144b01a</sys_ui_section>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-11-30 21:53:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>On Site Monitoring</caption>
+            <header>false</header>
+            <name>x_ifa_homelessness_agency_award</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-09-23 22:07:21</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a4cdcaad134a2a00293176666144b01a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>On Site Monitoring</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+            <sys_update_name>sys_ui_section_a4cdcaad134a2a00293176666144b01a</sys_update_name>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-09-23 22:07:21</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

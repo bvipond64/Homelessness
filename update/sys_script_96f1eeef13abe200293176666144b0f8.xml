@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_ifa_homelessness_agency_budget</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Validate Agency Budget</name>
+        <order>200</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	//gs.addInfoMessage('start rule');
+	
+	if (current.budget_drawn_amount > Number(0)) {
+		if (previous.budget_effective_date <= new GlideDate()) {
+			if (current.budget_effective_date == '') {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("The budget effective date cannot be backed out because there are draws for this award");	
+				}
+			}		
+		}
+		
+		if (current.budget_effective_date > new GlideDate()) {
+			current.setAbortAction(true);
+			if(gs.isInteractive()) {
+				gs.addErrorMessage("The budget effective date cannot be set into the future");	
+			}
+		}		
+	}
+	
+	if (current.isActionAborted() == false) {
+		var award = new GlideRecord('x_ifa_homelessness_agency_award');  
+		award.addQuery('sys_id', current.agency_award.sys_id);
+		award.query();
+
+		//Verify that budget amount equals grant amount
+		while (award.next()){		
+			if (Number(current.budget_total_amount) != Number(award.grant_amount)) {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Budget total amount " + current.budget_total_amount.getDisplayValue() + " must be equal to grant amount " + award.grant_amount.getDisplayValue());	
+				}
+			}
+		}
+
+		//Get the total budget item amount for the current Budget
+		var agg1 = new GlideAggregate('x_ifa_homelessness_agency_budget_item');
+		agg1.addQuery('agency_budget.sys_id',current.sys_id);
+		agg1.addAggregate('SUM','item_amount');
+		agg1.groupBy('agency_budget');
+		agg1.query();
+
+		var budgetItemTotal = Number(0);
+
+		if(agg1.hasNext()) {
+			while(agg1.next()){
+				budgetItemTotal = Number(agg1.getAggregate('SUM','item_amount'));
+			}
+		}
+
+		var budgetItemTotal_display = budgetItemTotal.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+
+		// Make sure that budget total amount is greater than budget item total
+		if (current.budget_effective_date == '') {
+			if (Number(current.budget_total_amount) < Number(budgetItemTotal)) {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Budget amount " + current.budget_total_amount.getDisplayValue() + " must be greater than or equal to budget item total " + budgetItemTotal_display);			
+				}				
+			} 
+		}
+		else {
+			// Do not allow effective date to be entered if the total budget
+			// item amount does not equal the total budget amount
+			if (Number(current.budget_total_amount) != Number(budgetItemTotal)) {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Effective Date cannot be entered until budget item total " + budgetItemTotal_display + " equals budget total amount " + current.budget_total_amount.getDisplayValue());	
+				}			
+			}
+
+			// Get the total draw amount for each budget item
+			var draw = new GlideAggregate('x_ifa_homelessness_agency_draw_item');
+			draw.addQuery('agency_draw.agency_award',current.agency_award);
+			draw.addQuery('item_amount','!=', 0);
+			draw.addAggregate('SUM','item_amount');
+			draw.groupBy('budget_item');
+			draw.query();
+
+			while(draw.next()){
+				var draw_amount = Number(draw.getAggregate('SUM','item_amount'));
+				var draw_display = draw_amount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+
+				if (draw_amount != Number(0)) {
+
+					// Select the current agency budget item for the draw budget item
+					var bItem = new GlideRecord('x_ifa_homelessness_agency_budget_item');  
+					bItem.addQuery('agency_budget.sys_id', current.sys_id);
+					bItem.addQuery("budget_item.sys_id", draw.budget_item);
+					bItem.setLimit(1);  
+					bItem.query();
+
+					// Show error if a budget item with draw is not in the current budget
+					if (bItem.hasNext()) {
+						while(bItem.next()){				
+							if (bItem.item_amount < draw_amount) {
+								current.setAbortAction(true);
+								if(gs.isInteractive()) {
+									gs.addErrorMessage('Budget Item ' + draw.budget_item.getDisplayValue() + '  must have an Item Amount greater than or equal to ' + draw_display);	
+								}
+							}
+						}
+					} else {
+						current.setAbortAction(true);
+						if(gs.isInteractive()) {
+							gs.addErrorMessage("Budget Item " + draw.budget_item.getDisplayValue() + "  has a drawn amount of " + draw_display + " and must be included in the budget");	
+						}
+					}
+				}
+			}
+		}	
+
+		// Get the latest agency budget that is not the current budget
+		var budget = new GlideRecord('x_ifa_homelessness_agency_budget');  
+		budget.addQuery('agency_award', current.agency_award);
+		budget.addQuery("sys_id","!=", current.sys_id);	
+		budget.addQuery('budget_effective_date','<=', new GlideDate());	
+		budget.orderByDesc('budget_effective_date');  
+		budget.setLimit(1);  
+		budget.query();
+
+		// Require the current budget effective date to be greater than the last budget effective date
+		while (budget.next()){
+			if (current.budget_effective_date != '') {
+				if (current.budget_effective_date <= budget.budget_effective_date) {
+					current.setAbortAction(true);
+					if(gs.isInteractive()) {
+						gs.addErrorMessage("Effective date " + current.budget_effective_date.getDisplayValue() + " must be greater than the previous effective date " + budget.budget_effective_date.getDisplayValue());	
+					}
+				}
+			}
+		}
+	}
+	
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-12-13 18:18:59</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>96f1eeef13abe200293176666144b0f8</sys_id>
+        <sys_mod_count>62</sys_mod_count>
+        <sys_name>Validate Agency Budget</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_script_96f1eeef13abe200293176666144b0f8</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-20 22:16:43</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=96f1eeef13abe200293176666144b0f8"/>
+</record_update>

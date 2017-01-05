@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_ifa_homelessness_agency_budget_item</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Validate Agency Budget Item</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	//gs.addInfoMessage('start rule');
+	
+	var budget = new GlideRecord('x_ifa_homelessness_agency_budget');  
+	budget.addQuery('sys_id', current.agency_budget.sys_id);
+	budget.query();
+
+	while (budget.next()){		
+		//Get the total budget item amount for the current Budget
+		var itemTot = new GlideAggregate('x_ifa_homelessness_agency_budget_item');
+		itemTot.addQuery('agency_budget.sys_id', budget.sys_id);
+		itemTot.addQuery('sys_id','!=',current.sys_id);
+		itemTot.addAggregate('SUM','item_amount');
+		itemTot.groupBy('agency_budget');
+		itemTot.query();
+
+		var budgetItemTotal = Number(current.item_amount);
+
+		if(itemTot.hasNext()) {
+			while(itemTot.next()){
+				budgetItemTotal = Number(budgetItemTotal) +  Number(itemTot.getAggregate('SUM','item_amount'));
+			}
+		}
+		
+		var budgetItemTotal_display_value = budgetItemTotal.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+
+		if (budget.budget_effective_date == '') {
+			// Make sure that budget total amount is greater than budget item total
+			if (Number(budget.budget_total_amount) < Number(budgetItemTotal)) {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("The total of all budget items " + budgetItemTotal_display_value + " must be less than or equal to total Budget amount " + budget.budget_total_amount.getDisplayValue() );
+				}				
+			} 
+		}
+		else {
+			// Make sure that budget total amount equals budget item total
+			if (Number(budget.budget_total_amount) != Number(budgetItemTotal)) {			
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("The total of all budget items " + budgetItemTotal_display_value + " must be equal to total Budget amount " + budget.budget_total_amount.getDisplayValue() );
+				}				
+			} 
+		}
+	}
+			
+	// Get the total draw amount for the budget item
+	var draw = new GlideAggregate('x_ifa_homelessness_agency_draw_item');
+	draw.addQuery('agency_draw.agency_award.sys_id',current.agency_budget.agency_award.sys_id);
+	draw.addQuery('item_amount','!=', 0);
+	draw.addQuery('budget_item.sys_id', current.budget_item.sys_id);
+	draw.addAggregate('SUM','item_amount');
+	draw.groupBy('budget_item');
+	draw.query();
+
+	while(draw.next()){
+		var draw_amount = Number(draw.getAggregate('SUM','item_amount'));
+		var draw_display = draw_amount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+					
+		if (draw_amount != Number(0)) {						
+			// Show error if a budget item with draw is not in the current budget
+			if (current.item_amount < draw_amount) {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage('Budget Item ' + draw.budget_item.getDisplayValue() + '  must have an Item Amount greater than or equal to the amount drawn ' + draw_display);	
+				}
+			}
+		} 
+	}	
+	
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-12-14 23:16:48</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e7cf200813f32600293176666144b06c</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>Validate Agency Budget Item</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_script_e7cf200813f32600293176666144b06c</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-15 00:04:29</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=e7cf200813f32600293176666144b06c"/>
+</record_update>

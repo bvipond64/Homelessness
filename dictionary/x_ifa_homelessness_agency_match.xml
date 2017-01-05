@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Agency Match" max_length="40" name="x_ifa_homelessness_agency_match" type="collection">
-        <element label="Agency Award" max_length="32" name="agency_award" reference="x_ifa_homelessness_agency_award" type="reference"/>
-        <element display="true" label="Amount Allocated" max_length="40" name="amount_allocated" type="currency"/>
-        <element label="Amount Documented" max_length="40" name="amount_documented" type="currency"/>
-        <element label="Expiration Date" max_length="40" name="expiration_date" type="glide_date"/>
-        <element label="Match Source" max_length="200" name="match_source" type="string"/>
-        <element label="Match Type" max_length="32" name="match_type" reference="x_ifa_homelessness_match_type" type="reference"/>
+        <element label="Agency Award" max_length="32" name="agency_award" read_only="true" reference="x_ifa_homelessness_agency_award" type="reference"/>
+        <element default="0" label="Amount Allocated" mandatory="true" max_length="40" name="amount_allocated" type="currency"/>
+        <element default="0" label="Amount Documented" mandatory="true" max_length="40" name="amount_documented" type="currency"/>
+        <element label="Expiration Date" mandatory="true" max_length="40" name="expiration_date" type="glide_date"/>
+        <element label="Match Amount Available" max_length="20" name="match_amount_available" read_only="true" type="currency"/>
+        <element label="Match Amount Drawn" max_length="20" name="match_amount_drawn" read_only="true" type="currency"/>
+        <element display="true" label="Match Source" mandatory="true" max_length="200" name="match_source" type="string"/>
+        <element choice="1" label="Match Type" mandatory="true" max_length="32" name="match_type" reference="x_ifa_homelessness_match_type" reference_qual="javascript:ref_qual_get_match_type();" type="reference" use_reference_qualifier="advanced">
+            <choice/>
+        </element>
+        <element label="Effective Date" mandatory="true" max_length="40" name="u_effective_date" type="glide_date"/>
         <index name="index">
             <element name="agency_award"/>
         </index>

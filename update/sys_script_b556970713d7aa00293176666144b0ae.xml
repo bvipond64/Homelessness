@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_ifa_homelessness_agency_match_item</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Validate Agency Match Item</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	// -  Abort the transaction if the match amount drawn exceeds the match amount allocated
+	var match = new GlideRecord('x_ifa_homelessness_agency_match');  
+	match.addQuery('sys_id', current.agency_match.sys_id); 
+	match.query();
+
+	while (match.next()){
+		
+		var agg2 = new GlideAggregate('x_ifa_homelessness_agency_match_item');
+		agg2.addQuery('agency_match.sys_id',current.agency_match.sys_id);
+		agg2.addQuery('sys_id', '!=', current.sys_id);		
+		agg2.addAggregate('SUM','item_amount');
+		agg2.groupBy('agency_match');
+		agg2.query();
+		
+		var matchDrawn = Number(0);
+			
+		if(agg2.hasNext()) {
+			while(agg2.next()){
+				matchDrawn = Number(agg2.getAggregate('SUM','item_amount')) + Number(current.item_amount);
+			}			
+		} else {
+				matchDrawn = Number(current.item_amount);			
+		}
+		
+		var matchDrawnl_display_value = matchDrawn.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+		
+		if (matchDrawn > match.amount_allocated) {
+			current.setAbortAction(true);
+			if(gs.isInteractive()) {
+				gs.addErrorMessage("Match amount drawn $" + matchDrawnl_display_value + " exceeds the match amount allocated " + match.amount_allocated.getDisplayValue());	
+			}			
+		}
+	}
+	
+	if (current.isActionAborted() == false) {
+		var draw = new GlideRecord('x_ifa_homelessness_agency_draw');  
+		draw.addQuery('sys_id', current.agency_draw.sys_id); 
+		draw.query();
+
+		while (draw.next()){
+			var rptMonths = draw.u_reporting_months.toString();
+			var aRptMonths = rptMonths.split(",");
+	
+			for (var i=0; i < aRptMonths.length; i++) {
+				var getDateStr = new GetDateString();
+				var begin_date = getDateStr.FormatDateString(aRptMonths[i], draw.agency_award.grant_year_ref.getDisplayValue());
+								
+				var mHist = new GlideRecord('x_ifa_homelessness_agency_match_history');  
+				mHist.addQuery('u_agency_match.sys_id', current.agency_match.sys_id);
+				mHist.addQuery('u_expiration_date','>=', begin_date);
+
+				begin_date.addMonthsLocalTime(1);
+				begin_date.addDaysLocalTime(-1);
+				
+				mHist.addQuery('u_effective_date','<=', begin_date);
+				mHist.query();
+				
+				if (mHist.hasNext() == false) {
+					
+					//current.setAbortAction(true);
+					if(gs.isInteractive()) {
+						gs.addErrorMessage("Match Source " + current.agency_match.getDisplayValue() + " was not active in " + aRptMonths[i]);
+					}
+				}
+			}
+		}
+	}
+	
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-11-29 23:01:00</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>b556970713d7aa00293176666144b0ae</sys_id>
+        <sys_mod_count>24</sys_mod_count>
+        <sys_name>Validate Agency Match Item</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_script_b556970713d7aa00293176666144b0ae</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-21 21:00:17</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=b556970713d7aa00293176666144b0ae"/>
+</record_update>

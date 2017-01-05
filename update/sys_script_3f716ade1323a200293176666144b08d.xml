@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_ifa_homelessness_agency_draw</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Validate Agency Draws</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	//gs.addInfoMessage('start rule ');
+	if (current.draw_amount == Number(0)) {
+		current.setAbortAction(true);
+		if(gs.isInteractive()) {
+			gs.addErrorMessage("The draw amount cannot be zero");
+		}
+	}	
+	
+	var award = new GlideRecord('x_ifa_homelessness_agency_award');  
+	award.addQuery('sys_id', current.agency_award.sys_id); 
+	award.query(); 
+	
+	while (award.next()){
+		if (award.grant_amount == Number(0)) {
+			current.setAbortAction(true);
+			if(gs.isInteractive()) {
+				gs.addErrorMessage("Draws cannot be made until grant amount has been entered");
+			}
+		}
+		
+		var budget_amount = Number(0);
+				
+		var budget = new GlideRecord('x_ifa_homelessness_agency_budget');  
+		budget.addQuery('agency_award.sys_id', award.sys_id); 
+		budget.addQuery('budget_effective_date','<=', new GlideDate());	
+		budget.orderByDesc('budget_effective_date');  
+		budget.setLimit(1);  
+		budget.query(); 
+
+		while (budget.next()){
+			budget_amount = Number(budget.budget_total_amount);
+		}
+		
+		if (Number(award.grant_amount) != Number(budget_amount)) {
+			current.setAbortAction(true);
+			if(gs.isInteractive()) {
+				gs.addErrorMessage("Draws cannot be made until the budget has been setup properly");
+			}
+		}
+	}
+	
+	var UsedMonths = [];
+	
+	var draws = new GlideRecord('x_ifa_homelessness_agency_draw');  
+	draws.addQuery('agency_award.sys_id', current.agency_award.sys_id);
+	draws.addQuery('sys_id', '!=', current.sys_id);
+	draws.query();
+
+	//Verify that budget amount equals grant amount
+	while (draws.next()){		
+		var dMonths = draws.u_reporting_months.toString();
+		var aDMonths = dMonths.split(",");
+		
+		for (var k=0; k < aDMonths.length; k++) {
+			if (aDMonths[k] != "") {
+				UsedMonths.push(aDMonths[k]);				
+			}
+		}
+	}
+	
+	var rptMonths = current.u_reporting_months.toString();
+	var aRptMonths = rptMonths.split(",");
+	
+	for (var i=0; i < aRptMonths.length; i++) {
+		for (var j=0; j < UsedMonths.length; j++) {
+			if (aRptMonths[i] == UsedMonths[j]) {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Reporting Month " + aRptMonths[i] + " already has a draw covering that month");
+				}
+			}
+		}
+	}
+	
+	if (current.management_approval_date > new GlideDate()) {
+		current.setAbortAction(true);
+		if(gs.isInteractive()) {
+			gs.addErrorMessage("Management Approval Date can not be greater than today");
+		}			
+	}
+
+	if (current.sent_to_accounting_date > new GlideDate()) {
+		current.setAbortAction(true);
+		if(gs.isInteractive()) {
+			gs.addErrorMessage("Approved in IDIS Date can not be greater than today");
+		}			
+	}
+	
+	if (current.agency_award.program_code.program_code == 'ESG') {
+		if (current.sent_to_accounting_date != '') {
+			if (current.approved_in_idis_date == '' || current.sent_to_accounting_date < current.approved_in_idis_date) {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Approved in IDIS Date must be entered prior to or same as Sent to Accounting Date");	
+				}			
+			}
+		}
+		
+		if (current.approved_in_idis_date != '') {
+			if (current.approved_in_idis_date > new GlideDate()) {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Approved in IDIS Date can not be greater than today");
+				}			
+			}
+
+			// -  Abort the transaction if Approved in IDIS Date is entered before Entered in IDIS Date
+			if (current.entered_in_idis_date == '' || current.approved_in_idis_date < current.entered_in_idis_date) {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Entered in IDIS Date must be entered prior to or same as Approved in IDIS Date");	
+				}			
+			}
+		}
+	// -  Abort the transaction if Entered in IDIS Date is entered before Voucher Number
+		if (current.entered_in_idis_date != '') {
+			if (current.entered_in_idis_date > new GlideDate()) {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Entered in IDIS Date can not be greater than today");
+				}			
+			}
+			if (current.idis_voucher_number == '') {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Voucher Number is required before Entered in IDIS Date can be set");
+				}			
+			}
+		}
+	}
+	
+	// Abort the transaction if the item amount is not equal to the draw amount
+	if (Number(current.u_item_total_amount) != current.draw_amount) {
+		if (current.management_approval_date != '') {
+			current.setAbortAction(true);
+			if(gs.isInteractive()) {
+				gs.addErrorMessage("Management Approval Date cannot be entered while the total item amount " + current.u_item_total_amount.getDisplayValue() + " does not equal the draw amount " + current.draw_amount.getDisplayValue());	
+			}			
+		} 
+
+		if (current.entered_in_idis_date != '') {
+			current.setAbortAction(true);
+			if(gs.isInteractive()) {
+				gs.addErrorMessage("Entered in IDIS Date cannot be entered while the total item amount " + current.u_item_total_amount.getDisplayValue() + " does not equal the draw amount " + current.draw_amount.getDisplayValue());	
+			}			
+		} 
+
+		if (current.approved_in_idis_date != '') {
+			current.setAbortAction(true);
+			if(gs.isInteractive()) {
+				gs.addErrorMessage("Approved in IDIS Date cannot be entered while the total item amount " + current.u_item_total_amount.getDisplayValue() + " does not equal the draw amount " + current.draw_amount.getDisplayValue());	
+			}			
+		} 
+		
+		if (current.sent_to_accounting_date != '') {
+			current.setAbortAction(true);
+			if(gs.isInteractive()) {
+				gs.addErrorMessage("Sent to Accounting Date cannot be entered while the total item amount " + current.u_item_total_amount.getDisplayValue() + " does not equal the draw amount " + current.draw_amount.getDisplayValue());	
+			}			
+		}
+	}
+	
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-12-09 21:05:20</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3f716ade1323a200293176666144b08d</sys_id>
+        <sys_mod_count>37</sys_mod_count>
+        <sys_name>Validate Agency Draws</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_script_3f716ade1323a200293176666144b08d</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2017-01-03 23:24:14</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=3f716ade1323a200293176666144b08d"/>
+</record_update>

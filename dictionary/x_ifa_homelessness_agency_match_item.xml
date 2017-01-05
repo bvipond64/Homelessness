@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Agency Match Item" max_length="40" name="x_ifa_homelessness_agency_match_item" type="collection">
-        <element label="Agency Draw" max_length="32" name="agency_draw" reference="x_ifa_homelessness_agency_draw" type="reference"/>
-        <element label="Agency Match" max_length="32" name="agency_match" reference="x_ifa_homelessness_agency_match" type="reference"/>
+        <element choice="1" label="Agency Draw" mandatory="true" max_length="32" name="agency_draw" reference="x_ifa_homelessness_agency_draw" reference_qual="javascript:ref_qual_get_agency_draw()" type="reference" use_reference_qualifier="advanced">
+            <choice/>
+        </element>
+        <element choice="1" label="Agency Match" mandatory="true" max_length="32" name="agency_match" reference="x_ifa_homelessness_agency_match" reference_qual="javascript:ref_qual_get_agency_match_item()" type="reference" use_reference_qualifier="advanced">
+            <choice/>
+        </element>
         <element label="Item Amount" max_length="40" name="item_amount" type="currency"/>
         <element display="true" label="Match Date" max_length="40" name="match_date" type="glide_date"/>
+        <element default="javascript:global.getNextObjNumberPadded();" label="Match Number" max_length="40" name="number" read_only="true" type="string"/>
         <index name="index">
             <element name="agency_draw"/>
         </index>

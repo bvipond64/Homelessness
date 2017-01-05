@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>true</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_ifa_homelessness_agency_draw_item</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Update calculated draw fields</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	//gs.addInfoMessage('Rule Started');
+	
+	// Update the total Draw Item Amount
+	var dr = new GlideRecord('x_ifa_homelessness_agency_draw');
+	dr.addQuery('sys_id', current.agency_draw.sys_id);
+	dr.query();
+	
+	while (dr.next()){
+		var iTot = new GlideAggregate('x_ifa_homelessness_agency_draw_item');
+		iTot.addQuery('agency_draw.sys_id', current.agency_draw.sys_id);
+		iTot.addAggregate('SUM','item_amount');
+		iTot.groupBy('agency_draw');
+		iTot.query();
+
+		var itemAmount = Number(0);
+
+		if(iTot.hasNext()) {
+			while(iTot.next()){
+				itemAmount = Number(iTot.getAggregate('SUM','item_amount'));
+			}			
+		}
+		
+		dr.u_item_total_amount = Number(itemAmount);
+		dr.setWorkflow(false);
+		dr.update();
+	}
+
+	// Update the Agency Award Draw Amount and Grant Amount Remaining
+	var gr = new GlideRecord('x_ifa_homelessness_agency_award');
+	gr.addQuery('sys_id',current.agency_draw.agency_award.sys_id);
+	gr.query();
+
+	while (gr.next()){
+		var agg1 = new GlideAggregate('x_ifa_homelessness_agency_draw_item');
+		agg1.addQuery('agency_draw.agency_award.sys_id',current.agency_draw.agency_award.sys_id);
+		agg1.addAggregate('SUM','item_amount');
+		agg1.groupBy('agency_draw.agency_award');
+		agg1.query();
+			
+		if(agg1.hasNext()) {
+			while(agg1.next()){
+				gr.grant_amount_drawn = Number(agg1.getAggregate('SUM','item_amount'));
+			}			
+		} else {
+				gr.grant_amount_drawn = Number(current.item_amount);			
+		}
+		
+		gr.grant_amount_available = gr.grant_amount - gr.grant_amount_drawn;
+		gr.setWorkflow(false);
+		gr.update();
+	}
+	
+	// - Calculate the budget amount drawn for the agency award
+	var budget_Drawn_Amount = Number(current.item_amount);
+	
+	var agg2 = new GlideAggregate('x_ifa_homelessness_agency_draw_item');
+
+	agg2.addQuery('agency_draw.agency_award.sys_id',current.agency_draw.agency_award.sys_id);
+	agg2.addAggregate('SUM','item_amount');
+	agg2.groupBy('agency_draw.agency_award');
+	agg2.query();
+			
+	while(agg2.next()){
+		budget_Drawn_Amount = Number(agg2.getAggregate('SUM','item_amount'));
+	}			
+	
+	// - Update the budget amount drawn for every budget
+	var budget = new GlideRecord('x_ifa_homelessness_agency_budget');  
+	budget.addQuery('agency_award.sys_id', current.agency_draw.agency_award.sys_id); 
+	//budget.addQuery('budget_effective_date','<=', new GlideDate());
+	//budget.orderByDesc('budget_effective_date');  
+	//budget.setLimit(1);
+	budget.query(); 
+
+	while (budget.next()){
+		budget.budget_drawn_amount = budget_Drawn_Amount;
+		budget.budget_amount_available = budget.budget_total_amount - budget.budget_drawn_amount;	
+		
+		budget.setWorkflow(false);
+		budget.update();
+		
+		// Set the budget item amount drawn and remaining
+		var budgetItem = new GlideRecord('x_ifa_homelessness_agency_budget_item');  
+		budgetItem.addQuery('budget_item.sys_id', current.budget_item.sys_id); 
+		budgetItem.addQuery('agency_budget.sys_id', budget.sys_id); 
+		budgetItem.query(); 
+
+		while (budgetItem.next()){
+			var agg3 = new GlideAggregate('x_ifa_homelessness_agency_draw_item');
+			agg3.addQuery('agency_draw.agency_award.sys_id',current.agency_draw.agency_award.sys_id);
+			agg3.addQuery('budget_item.sys_id',current.budget_item.sys_id);
+			agg3.addAggregate('SUM','item_amount');
+			agg3.groupBy('agency_draw.agency_award');
+			agg3.query();
+
+			if(agg3.hasNext()) {
+				while(agg3.next()){
+					budgetItem.item_drawn_amount = Number(agg3.getAggregate('SUM','item_amount'));
+				}			
+			} else {
+					budgetItem.item_drawn_amount = Number(current.item_amount);			
+			}
+			
+			budgetItem.item_amount_remaining = budgetItem.item_amount - budgetItem.item_drawn_amount;
+			budgetItem.setWorkflow(false);
+			budgetItem.update();
+		}
+	}
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-11-17 22:47:20</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>4906a91f138b6600293176666144b06c</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>Update calculated draw fields</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_script_4906a91f138b6600293176666144b06c</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-19 16:24:01</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=4906a91f138b6600293176666144b06c"/>
+</record_update>

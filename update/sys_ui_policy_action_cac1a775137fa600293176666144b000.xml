@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <disabled>true</disabled>
+        <field>u_grant_amount</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-12-20 22:42:58</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>cac1a775137fa600293176666144b000</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>u_grant_amount</sys_name>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_ui_policy_action_cac1a775137fa600293176666144b000</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-20 22:42:58</sys_updated_on>
+        <table>x_ifa_homelessness_agency_grant_history</table>
+        <ui_policy display_value="Agency Grant History - Protect History fields">e121a375137fa600293176666144b084</ui_policy>
+        <visible>ignore</visible>
+    </sys_ui_policy_action>
+</record_update>

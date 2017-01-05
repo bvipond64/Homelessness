@@ -11,7 +11,7 @@
 	return '';  // return the calculated value
 
 })(current);]]></calculation>
-        <choice/>
+        <choice>1</choice>
         <choice_field/>
         <choice_table/>
         <column_label>Budget Item</column_label>
@@ -22,7 +22,7 @@
         <delete_roles/>
         <dependent/>
         <dependent_on_field/>
-        <display>false</display>
+        <display>true</display>
         <dynamic_creation>false</dynamic_creation>
         <dynamic_creation_script/>
         <dynamic_default_value/>
@@ -31,7 +31,7 @@
         <element_reference>false</element_reference>
         <foreign_database/>
         <internal_type display_value="Reference">reference</internal_type>
-        <mandatory>false</mandatory>
+        <mandatory>true</mandatory>
         <max_length>32</max_length>
         <name>x_ifa_homelessness_agency_draw_item</name>
         <next_element/>
@@ -39,10 +39,10 @@
         <read_only>false</read_only>
         <read_roles/>
         <reference display_value="" name="x_ifa_homelessness_budget_item">x_ifa_homelessness_budget_item</reference>
-        <reference_cascade_rule/>
+        <reference_cascade_rule>none</reference_cascade_rule>
         <reference_floats>false</reference_floats>
         <reference_key/>
-        <reference_qual/>
+        <reference_qual>javascript:ref_qual_get_agency_budget_item()</reference_qual>
         <reference_qual_condition/>
         <reference_type/>
         <sizeclass/>
@@ -53,7 +53,7 @@
         <sys_created_on>2016-09-23 20:59:48</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>2ced7129134a2a00293176666144b052</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>Budget Item</sys_name>
         <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
         <sys_policy/>
@@ -61,13 +61,13 @@
         <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
         <sys_update_name>sys_dictionary_x_ifa_homelessness_agency_draw_item_budget_item</sys_update_name>
         <sys_updated_by>bob.vipondSN</sys_updated_by>
-        <sys_updated_on>2016-09-23 20:59:49</sys_updated_on>
+        <sys_updated_on>2016-12-13 21:38:16</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
         <use_dependent_field>false</use_dependent_field>
         <use_dynamic_default>false</use_dynamic_default>
-        <use_reference_qualifier>simple</use_reference_qualifier>
+        <use_reference_qualifier>advanced</use_reference_qualifier>
         <virtual>false</virtual>
         <widget/>
         <write_roles/>

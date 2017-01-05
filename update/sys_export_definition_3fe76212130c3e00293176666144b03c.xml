@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_export_definition">
+    <sys_export_definition action="INSERT_OR_UPDATE">
+        <field_list>agencyname,contract_number,legal_name</field_list>
+        <filter/>
+        <name>Homelessness Agencies</name>
+        <sys_class_name>sys_export_definition</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2017-01-03 18:03:16</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>3fe76212130c3e00293176666144b03c</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Homelessness Agencies</sys_name>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_export_definition_3fe76212130c3e00293176666144b03c</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2017-01-03 18:03:16</sys_updated_on>
+        <table_name>x_ifa_homelessness_agency</table_name>
+        <view display_value="Exp_d3fe76212130c3e00293176666144b03c" name="exp_d3fe76212130c3e00293176666144b03c">a708621a13c83e00293176666144b061</view>
+    </sys_export_definition>
+</record_update>

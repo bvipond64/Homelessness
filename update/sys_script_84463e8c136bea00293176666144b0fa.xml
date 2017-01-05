@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_ifa_homelessness_agency_grant_history</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Update Grant Amount from grant history</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	//gs.addInfoMessage('Rule Started');
+
+	var award = new GlideRecord('x_ifa_homelessness_agency_award');  
+	award.addQuery('sys_id', current.u_agency_award.sys_id); 
+	award.query();
+	
+	while (award.next()){
+		// - Get the lastest agency grant history record
+		var lastm = new GlideRecord('x_ifa_homelessness_agency_grant_history');  
+		lastm.addQuery('u_agency_award.sys_id', current.u_agency_award.sys_id); 
+		lastm.addQuery('sys_id', '!=', current.sys_id);
+		lastm.orderByDesc('u_grant_change_date');  
+		lastm.setLimit(1);  
+		lastm.query();
+			
+		if(lastm.hasNext()) {
+			while (lastm.next()){
+				if (current.u_grant_change_date > lastm.u_grant_change_date) {
+					award.grant_amount = current.u_grant_amount;
+					award.grant_amount_available = Number(current.u_grant_amount) - Number(award.grant_amount_drawn);
+				}
+			}
+		} 
+		else
+		{
+			award.grant_amount = current.u_grant_amount;
+			award.grant_amount_available = Number(current.u_grant_amount) - Number(award.grant_amount_drawn);
+		}
+		award.update();
+	}	
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-12-02 22:49:20</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>84463e8c136bea00293176666144b0fa</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Update Grant Amount from grant history</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_script_84463e8c136bea00293176666144b0fa</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-02 23:01:39</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=84463e8c136bea00293176666144b0fa"/>
+</record_update>

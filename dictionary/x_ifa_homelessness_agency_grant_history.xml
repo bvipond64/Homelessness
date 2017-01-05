@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Agency Grant History" max_length="40" name="x_ifa_homelessness_agency_grant_history" type="collection">
+        <element label="Agency Award" max_length="32" name="u_agency_award" read_only="true" reference="x_ifa_homelessness_agency_award" type="reference"/>
+        <element label="Change Reason" mandatory="true" max_length="800" name="u_change_reason" type="string"/>
+        <element label="Grant Amount" mandatory="true" max_length="40" name="u_grant_amount" type="currency"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return new GlideDate();  // return the calculated value&#13;&#10;&#13;&#10;})(current);" default="javascript:gs.now()" display="true" dynamic_default_value="fb7553e85f220100a9ad2572f2b477b4" label="Grant Change Date" max_length="40" name="u_grant_change_date" read_only="true" type="glide_date" use_dynamic_default="true"/>
+        <index name="index">
+            <element name="u_agency_award"/>
+        </index>
+    </element>
+</database>

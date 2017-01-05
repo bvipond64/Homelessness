@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>true</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_ifa_homelessness_agency_draw_item</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Delete Validation - Agency Draw Item</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	var draw = new GlideRecord('x_ifa_homelessness_agency_draw');  
+	draw.addQuery('sys_id', current.agency_draw.sys_id);
+	draw.query();
+
+	// Abort the delete if an agency award exists
+	while (draw.next()){	
+		if (draw.sent_to_accounting_date != '') {
+			current.setAbortAction(true);
+			if(gs.isInteractive()) {
+				gs.addErrorMessage("Draw item - " + current.budget_item.budget_item_desc + " cannot be deleted because the draw has been sent to accounting");	
+			}
+		}
+
+		if (current.isActionAborted() == 0) {
+			if (draw.approved_in_idis_date != '') {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Draw item - " + current.budget_item.budget_item_desc + " cannot be deleted because the draw has been approved in IDIS");	
+				}
+			}
+		}	
+
+		if (current.isActionAborted() == 0) {
+			if (draw.entered_in_idis_date != '') {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Draw item - " + current.budget_item.budget_item_desc + " cannot be deleted because the draw has been entered in IDIS");	
+				}
+			}
+		}	
+
+		if (current.isActionAborted() == 0) {
+			if (draw.management_approval_date != '') {
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Draw item - " + current.budget_item.budget_item_desc + " cannot be deleted because the draw has been approved by management");	
+				}
+			}
+		}			
+	}
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-12-20 20:57:21</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8c75cf79133fa600293176666144b0eb</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Delete Validation - Agency Draw Item</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_script_8c75cf79133fa600293176666144b0eb</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-20 21:00:52</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=8c75cf79133fa600293176666144b0eb"/>
+</record_update>

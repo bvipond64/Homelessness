@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="IDIS Voucher" max_length="40" name="x_ifa_homelessness_idis_voucher" type="collection">
+        <element label="Approved In IDIS Date" max_length="40" name="approved_in_idis_date" type="glide_date"/>
+        <element label="Entered In IDIS Date" max_length="40" name="entered_in_idis_date" type="glide_date"/>
+        <element display="true" label="Voucher Number" mandatory="true" max_length="50" name="voucher_number" type="string"/>
+    </element>
+</database>

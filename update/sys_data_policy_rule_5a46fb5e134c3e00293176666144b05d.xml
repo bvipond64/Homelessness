@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_data_policy_rule">
+    <sys_data_policy_rule action="INSERT_OR_UPDATE">
+        <disabled>true</disabled>
+        <field>sent_to_accounting_date</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_data_policy_rule</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2017-01-03 23:45:16</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_data_policy display_value="Protect Fields when waiting for Approved in IDIS">9206fb1e134c3e00293176666144b000</sys_data_policy>
+        <sys_id>5a46fb5e134c3e00293176666144b05d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>sent_to_accounting_date</sys_name>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_data_policy_rule_5a46fb5e134c3e00293176666144b05d</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2017-01-03 23:45:16</sys_updated_on>
+        <table>x_ifa_homelessness_agency_draw</table>
+    </sys_data_policy_rule>
+</record_update>

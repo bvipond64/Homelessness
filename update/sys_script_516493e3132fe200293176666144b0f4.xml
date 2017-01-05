@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_ifa_homelessness_agency_budget</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Update Agency Budget Amount Available</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	var budget = new GlideRecord('x_ifa_homelessness_agency_budget');  
+	budget.addQuery('agency_award', current.agency_award);
+	budget.addQuery("sys_id","!=", current.sys_id);	
+	budget.addQuery('budget_effective_date','<=', new GlideDate());	
+	budget.orderByDesc('budget_effective_date');  
+	budget.setLimit(1);  
+	budget.query();
+
+	while (budget.next()){
+		if (current.budget_effective_date > budget.budget_effective_date) {
+			// - Calculate the current budget amount drawn and budget amount available
+			var gr = new GlideRecord('x_ifa_homelessness_agency_award');
+			gr.addQuery('sys_id',current.agency_award.sys_id);
+			gr.query();
+
+			while (gr.next()){
+				current.budget_drawn_amount = gr.grant_amount_drawn;
+				current.budget_amount_available = Number(current.budget_total_amount) - Number(current.budget_drawn_amount);
+				current.update();
+			}
+
+			// Calculate the budget item amount drawn and remaining
+			var budgetItem = new GlideRecord('x_ifa_homelessness_agency_budget_item');  
+			budgetItem.addQuery('agency_budget.sys_id', current.sys_id); 
+			budgetItem.query(); 
+
+			while (budgetItem.next()){
+				var agg3 = new GlideAggregate('x_ifa_homelessness_agency_draw_item');
+				agg3.addQuery('agency_draw.agency_award.sys_id',current.agency_award.sys_id);
+				agg3.addQuery('budget_item.sys_id', budgetItem.budget_item.sys_id);
+				agg3.addAggregate('SUM','item_amount');
+				agg3.groupBy('agency_draw.agency_award');
+				agg3.query();
+
+				if(agg3.hasNext()) {
+					while(agg3.next()){
+						budgetItem.item_drawn_amount = Number(agg3.getAggregate('SUM','item_amount'));
+					}			
+				} else {
+						budgetItem.item_drawn_amount = Number(0);			
+				}
+				budgetItem.item_amount_remaining = Number(budgetItem.item_amount) - Number(budgetItem.item_drawn_amount);
+				budgetItem.update();
+			}
+	
+		}
+	}	
+	
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-12-13 21:59:33</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>516493e3132fe200293176666144b0f4</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Update Agency Budget Amount Available</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_script_516493e3132fe200293176666144b0f4</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-15 21:47:52</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=516493e3132fe200293176666144b0f4"/>
+</record_update>

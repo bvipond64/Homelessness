@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_ifa_homelessness.ref_qual_get_budget_item</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>ref_qual_get_budget_item</name>
+        <script><![CDATA[function ref_qual_get_budget_item() {
+	
+	//gs.addInfoMessage(current.agency_budget.agency_award.program_code.program_code);
+		
+	var result = 'sys_idIN';
+	var ids1 = [];
+	
+	var gr = new GlideRecord('x_ifa_homelessness_budget_item');
+				gr.addQuery('program.program_code',current.agency_budget.agency_award.program_code.program_code);
+	gr.query();
+	while (gr.next()){
+		ids1.push('' + gr.sys_id);
+	}
+	
+	//gs.addInfoMessage(ids1.toString());
+	return result + ids1.toString();
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-11-15 20:33:46</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>3722fee2138b2600293176666144b0b4</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>ref_qual_get_budget_item</sys_name>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_script_include_3722fee2138b2600293176666144b0b4</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-11-15 20:44:30</sys_updated_on>
+    </sys_script_include>
+</record_update>

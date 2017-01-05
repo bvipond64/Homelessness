@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_list parent="cmdb_ci_computer" relationship="80a164460ab30152004422b3fb69ca1e" sys_domain="global" table="cmdb_ci_ip_address" version="2" view="">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>ip_address</element>
+            <list_id display_value="cmdb_ci_ip_address" element="NULL" name="cmdb_ci_ip_address" parent="cmdb_ci_computer" relationship="80a164460ab30152004422b3fb69ca1e" sys_domain="global" view="Default view">add7b214ff402000dada361332f49df8</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>aleck.lin</sys_created_by>
+            <sys_created_on>2012-02-04 00:23:26</sys_created_on>
+            <sys_id>21d7b214ff402000dada361332f49df9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>aleck.lin</sys_updated_by>
+            <sys_updated_on>2012-02-04 00:23:26</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>netmask</element>
+            <list_id display_value="cmdb_ci_ip_address" element="NULL" name="cmdb_ci_ip_address" parent="cmdb_ci_computer" relationship="80a164460ab30152004422b3fb69ca1e" sys_domain="global" view="Default view">add7b214ff402000dada361332f49df8</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>aleck.lin</sys_created_by>
+            <sys_created_on>2012-02-04 00:23:26</sys_created_on>
+            <sys_id>a1d7b214ff402000dada361332f49df9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>aleck.lin</sys_updated_by>
+            <sys_updated_on>2012-02-04 00:23:26</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>ip_version</element>
+            <list_id display_value="cmdb_ci_ip_address" element="NULL" name="cmdb_ci_ip_address" parent="cmdb_ci_computer" relationship="80a164460ab30152004422b3fb69ca1e" sys_domain="global" view="Default view">add7b214ff402000dada361332f49df8</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>aleck.lin</sys_created_by>
+            <sys_created_on>2012-02-04 00:23:27</sys_created_on>
+            <sys_id>25d7b214ff402000dada361332f49df9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>aleck.lin</sys_updated_by>
+            <sys_updated_on>2012-02-04 00:23:27</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>nic</element>
+            <list_id display_value="cmdb_ci_ip_address" element="NULL" name="cmdb_ci_ip_address" parent="cmdb_ci_computer" relationship="80a164460ab30152004422b3fb69ca1e" sys_domain="global" view="Default view">add7b214ff402000dada361332f49df8</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>aleck.lin</sys_created_by>
+            <sys_created_on>2012-02-04 00:23:27</sys_created_on>
+            <sys_id>a5d7b214ff402000dada361332f49df9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>aleck.lin</sys_updated_by>
+            <sys_updated_on>2012-02-04 00:23:27</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>cmdb_ci_ip_address</name>
+            <parent>cmdb_ci_computer</parent>
+            <position/>
+            <relationship display_value="CI IPs">80a164460ab30152004422b3fb69ca1e</relationship>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>bob.vipond</sys_created_by>
+            <sys_created_on>2016-10-31 13:26:48</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e10304b113f2e600293176666144b07a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>cmdb_ci_ip_address</sys_name>
+            <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+            <sys_update_name>sys_ui_list_cmdb_ci_computer_80a164460ab30152004422b3fb69ca1e_null</sys_update_name>
+            <sys_updated_by>bob.vipond</sys_updated_by>
+            <sys_updated_on>2016-10-31 13:26:48</sys_updated_on>
+            <sys_user display_value="Bob Vipond">a6bd891913c75a0012bc7e776144b0d2</sys_user>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

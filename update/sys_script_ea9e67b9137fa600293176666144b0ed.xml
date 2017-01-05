@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>true</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_ifa_homelessness_agency_match_history</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Delete Validation - Agency Match History</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+	
+	var match = new GlideRecord('x_ifa_homelessness_agency_match');  
+	match.addQuery('sys_id', current.u_agency_match.sys_id); 
+	match.query();
+	
+	while (match.next()){
+		if (match.match_amount_drawn > Number(0)) {
+		
+			var lastm = new GlideRecord('x_ifa_homelessness_agency_match_history');  
+			lastm.addQuery('u_agency_match.sys_id', current.u_agency_match.sys_id); 
+			lastm.addQuery('sys_id', '!=', current.sys_id);
+			lastm.orderByDesc('u_effective_date');  
+			lastm.setLimit(1);  
+			lastm.query();
+
+			if (lastm.hasNext()) {
+				while (lastm.next()){
+					if (lastm.u_amount_allocated < match.match_amount_drawn) {
+						current.setAbortAction(true);
+						if(gs.isInteractive()) {
+							gs.addErrorMessage("Match History cannot be deleted because the match drawn amount exceeds the amount allocated on the previous match history record");	
+						}	
+					}
+					if (lastm.u_effective_date > current.u_effective_date) {
+						current.setAbortAction(true);
+						if(gs.isInteractive()) {
+							gs.addErrorMessage("Match History cannot be deleted");	
+						}	
+					}
+				}		
+			} 
+			else
+			{
+				current.setAbortAction(true);
+				if(gs.isInteractive()) {
+					gs.addErrorMessage("Match History cannot be deleted because there is a match amount drawn");	
+				}	
+			}
+		}
+	}
+
+	
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-12-20 23:41:21</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>ea9e67b9137fa600293176666144b0ed</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Delete Validation - Agency Match History</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_script_ea9e67b9137fa600293176666144b0ed</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-21 00:29:41</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=ea9e67b9137fa600293176666144b0ed"/>
+</record_update>

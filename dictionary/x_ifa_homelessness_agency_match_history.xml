@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Agency Match History" max_length="40" name="x_ifa_homelessness_agency_match_history" type="collection">
+        <element label="Agency Match" max_length="32" name="u_agency_match" read_only="true" reference="x_ifa_homelessness_agency_match" type="reference"/>
+        <element label="Amount Allocated" mandatory="true" max_length="40" name="u_amount_allocated" type="currency"/>
+        <element label="Amount Documented" mandatory="true" max_length="40" name="u_amount_documented" type="currency"/>
+        <element display="true" label="Effective Date" mandatory="true" max_length="40" name="u_effective_date" type="glide_date"/>
+        <element label="Expiration Date" mandatory="true" max_length="40" name="u_expiration_date" type="glide_date"/>
+        <index name="index">
+            <element name="u_agency_match"/>
+        </index>
+    </element>
+</database>

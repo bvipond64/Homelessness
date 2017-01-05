@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <disabled>true</disabled>
+        <field>grant_amount</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-12-02 21:42:52</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>515726c8136bea00293176666144b00c</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>grant_amount</sys_name>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_ui_policy_action_515726c8136bea00293176666144b00c</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-02 21:59:07</sys_updated_on>
+        <table>x_ifa_homelessness_agency_award</table>
+        <ui_policy display_value="Agency Award - Grant Amount read only after insert">6ee662c8136bea00293176666144b0a3</ui_policy>
+        <visible>ignore</visible>
+    </sys_ui_policy_action>
+</record_update>

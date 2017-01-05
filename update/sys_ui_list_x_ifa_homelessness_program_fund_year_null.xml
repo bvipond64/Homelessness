@@ -3,123 +3,48 @@
     <sys_ui_list parent="" relationship="" sys_domain="global" table="x_ifa_homelessness_program_fund_year" version="2" view="">
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>award_date</element>
-            <list_id display_value="x_ifa_homelessness_program_fund_year" element="NULL" name="x_ifa_homelessness_program_fund_year" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a803bc25134a2a00638e74c66144b0c4</list_id>
+            <element>fund_year_ref.u_year</element>
+            <list_id display_value="x_ifa_homelessness_program_fund_year" element="NULL" name="x_ifa_homelessness_program_fund_year" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">2ebd1d40132bea00293176666144b09f</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
             <sum>false</sum>
-            <sys_created_by>karen.westbrook</sys_created_by>
-            <sys_created_on>2016-09-23 15:30:52</sys_created_on>
-            <sys_id>ac03bc25134a2a00638e74c66144b0c4</sys_id>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-02 16:20:48</sys_created_on>
+            <sys_id>62bd1d40132bea00293176666144b0a0</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>karen.westbrook</sys_updated_by>
-            <sys_updated_on>2016-09-23 15:30:52</sys_updated_on>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-02 16:20:48</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>contract_submission_deadline</element>
-            <list_id display_value="x_ifa_homelessness_program_fund_year" element="NULL" name="x_ifa_homelessness_program_fund_year" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a803bc25134a2a00638e74c66144b0c4</list_id>
+            <element>program.program_code</element>
+            <list_id display_value="x_ifa_homelessness_program_fund_year" element="NULL" name="x_ifa_homelessness_program_fund_year" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">2ebd1d40132bea00293176666144b09f</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>1</position>
             <sum>false</sum>
-            <sys_created_by>karen.westbrook</sys_created_by>
-            <sys_created_on>2016-09-23 15:30:52</sys_created_on>
-            <sys_id>2003bc25134a2a00638e74c66144b0c5</sys_id>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-02 16:20:48</sys_created_on>
+            <sys_id>e2bd1d40132bea00293176666144b0a0</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>karen.westbrook</sys_updated_by>
-            <sys_updated_on>2016-09-23 15:30:52</sys_updated_on>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-02 16:20:48</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>expenditure_deadline</element>
-            <list_id display_value="x_ifa_homelessness_program_fund_year" element="NULL" name="x_ifa_homelessness_program_fund_year" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a803bc25134a2a00638e74c66144b0c4</list_id>
+            <element>program.program_description</element>
+            <list_id display_value="x_ifa_homelessness_program_fund_year" element="NULL" name="x_ifa_homelessness_program_fund_year" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">2ebd1d40132bea00293176666144b09f</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>2</position>
             <sum>false</sum>
-            <sys_created_by>karen.westbrook</sys_created_by>
-            <sys_created_on>2016-09-23 15:30:52</sys_created_on>
-            <sys_id>a003bc25134a2a00638e74c66144b0c5</sys_id>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-02 16:20:48</sys_created_on>
+            <sys_id>66bd1d40132bea00293176666144b0a0</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>karen.westbrook</sys_updated_by>
-            <sys_updated_on>2016-09-23 15:30:52</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>fund_year</element>
-            <list_id display_value="x_ifa_homelessness_program_fund_year" element="NULL" name="x_ifa_homelessness_program_fund_year" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a803bc25134a2a00638e74c66144b0c4</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>3</position>
-            <sum>false</sum>
-            <sys_created_by>karen.westbrook</sys_created_by>
-            <sys_created_on>2016-09-23 15:30:52</sys_created_on>
-            <sys_id>2403bc25134a2a00638e74c66144b0c5</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>karen.westbrook</sys_updated_by>
-            <sys_updated_on>2016-09-23 15:30:52</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>hud_authorized_amount</element>
-            <list_id display_value="x_ifa_homelessness_program_fund_year" element="NULL" name="x_ifa_homelessness_program_fund_year" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a803bc25134a2a00638e74c66144b0c4</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>4</position>
-            <sum>false</sum>
-            <sys_created_by>karen.westbrook</sys_created_by>
-            <sys_created_on>2016-09-23 15:30:52</sys_created_on>
-            <sys_id>a403bc25134a2a00638e74c66144b0c5</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>karen.westbrook</sys_updated_by>
-            <sys_updated_on>2016-09-23 15:30:52</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>hud_grant_nbr</element>
-            <list_id display_value="x_ifa_homelessness_program_fund_year" element="NULL" name="x_ifa_homelessness_program_fund_year" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a803bc25134a2a00638e74c66144b0c4</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>5</position>
-            <sum>false</sum>
-            <sys_created_by>karen.westbrook</sys_created_by>
-            <sys_created_on>2016-09-23 15:30:52</sys_created_on>
-            <sys_id>2803bc25134a2a00638e74c66144b0c5</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>karen.westbrook</sys_updated_by>
-            <sys_updated_on>2016-09-23 15:30:52</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>idis_admin_number</element>
-            <list_id display_value="x_ifa_homelessness_program_fund_year" element="NULL" name="x_ifa_homelessness_program_fund_year" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a803bc25134a2a00638e74c66144b0c4</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>6</position>
-            <sum>false</sum>
-            <sys_created_by>karen.westbrook</sys_created_by>
-            <sys_created_on>2016-09-23 15:30:52</sys_created_on>
-            <sys_id>a803bc25134a2a00638e74c66144b0c5</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>karen.westbrook</sys_updated_by>
-            <sys_updated_on>2016-09-23 15:30:52</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>program</element>
-            <list_id display_value="x_ifa_homelessness_program_fund_year" element="NULL" name="x_ifa_homelessness_program_fund_year" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a803bc25134a2a00638e74c66144b0c4</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>7</position>
-            <sum>false</sum>
-            <sys_created_by>karen.westbrook</sys_created_by>
-            <sys_created_on>2016-09-23 15:30:52</sys_created_on>
-            <sys_id>2c03bc25134a2a00638e74c66144b0c5</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>karen.westbrook</sys_updated_by>
-            <sys_updated_on>2016-09-23 15:30:52</sys_updated_on>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-02 16:20:48</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -132,12 +57,12 @@
             <relationship/>
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
-            <sys_created_by>karen.westbrook</sys_created_by>
-            <sys_created_on>2016-09-23 15:30:52</sys_created_on>
+            <sys_created_by>bob.vipondSN</sys_created_by>
+            <sys_created_on>2016-12-02 16:20:48</sys_created_on>
             <sys_customer_update>true</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>a803bc25134a2a00638e74c66144b0c4</sys_id>
+            <sys_id>2ebd1d40132bea00293176666144b09f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>x_ifa_homelessness_program_fund_year</sys_name>
             <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
@@ -145,8 +70,8 @@
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
             <sys_update_name>sys_ui_list_x_ifa_homelessness_program_fund_year_null</sys_update_name>
-            <sys_updated_by>karen.westbrook</sys_updated_by>
-            <sys_updated_on>2016-09-23 15:30:52</sys_updated_on>
+            <sys_updated_by>bob.vipondSN</sys_updated_by>
+            <sys_updated_on>2016-12-02 16:20:48</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

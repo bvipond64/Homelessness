@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_ifa_homelessness.GetDateString</api_name>
+        <client_callable>true</client_callable>
+        <description>Returns the beginning date for a month</description>
+        <name>GetDateString</name>
+        <script><![CDATA[var GetDateString = Class.create();
+GetDateString.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	
+	initialize : function() {
+	},
+ 
+	FormatDateString : function(Month, Year) {
+		var myDate = new GlideDate();
+
+		if (Month == 'January') {
+			myDate.setValue(Year + '-01-01');
+			return myDate;
+		}
+
+		if (Month == 'February') {
+			myDate.setValue(Year + '-02-01');
+			return myDate;
+		}
+
+		if (Month == 'March') {
+			myDate.setValue(Year + '-03-01');
+			return myDate;
+		}
+
+		if (Month == 'April') {
+			myDate.setValue(Year + '-04-01');
+			return myDate;
+		}
+
+		if (Month == 'May') {
+			myDate.setValue(Year + '-05-01');
+			return myDate;
+		}
+
+		if (Month == 'June') {
+			myDate.setValue(Year + '-06-01');
+			return myDate;
+		}
+
+		if (Month == 'July') {
+			myDate.setValue(Year + '-07-01');
+			return myDate;
+		}
+
+		if (Month == 'August') {
+			myDate.setValue(Year + '-08-01');
+			return myDate;
+		}
+
+		if (Month == 'September') {
+			myDate.setValue(Year + '-09-01');
+			return myDate;
+		}
+
+		if (Month == 'October') {
+			myDate.setValue(Year + '-10-01');
+			return myDate;
+		}
+
+		if (Month == 'November') {
+			myDate.setValue(Year + '-11-01');
+			return myDate;
+		}
+
+		if (Month == 'December') {
+			myDate.setValue(Year + '-12-01');
+			return myDate;
+		}
+	},
+
+    type: 'GetDateString'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-12-21 16:24:43</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>3651170213f32600638e74c66144b020</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>GetDateString</sys_name>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_script_include_3651170213f32600638e74c66144b020</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-21 17:39:19</sys_updated_on>
+    </sys_script_include>
+</record_update>

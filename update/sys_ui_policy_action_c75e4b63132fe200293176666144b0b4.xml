@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <disabled>ignore</disabled>
+        <field>idis_activity_id</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>bob.vipondSN</sys_created_by>
+        <sys_created_on>2016-12-13 21:31:52</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>c75e4b63132fe200293176666144b0b4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>idis_activity_id</sys_name>
+        <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
+        <sys_update_name>sys_ui_policy_action_c75e4b63132fe200293176666144b0b4</sys_update_name>
+        <sys_updated_by>bob.vipondSN</sys_updated_by>
+        <sys_updated_on>2016-12-13 21:31:52</sys_updated_on>
+        <table>x_ifa_homelessness_agency_budget_item</table>
+        <ui_policy display_value="Agency Budget Item - Hide IDIS Activity id  for non-ESG awards">dabd4f23132fe200293176666144b0b0</ui_policy>
+        <visible>false</visible>
+    </sys_ui_policy_action>
+</record_update>

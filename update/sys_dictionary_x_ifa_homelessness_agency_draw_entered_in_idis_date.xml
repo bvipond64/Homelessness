@@ -53,7 +53,7 @@
         <sys_created_on>2016-09-23 20:55:54</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>0eacf9e5134a2a00293176666144b0c7</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Entered In IDIS Date</sys_name>
         <sys_package display_value="Homelessness" source="x_ifa_homelessness">6de0807e13b96600638e74c66144b027</sys_package>
         <sys_policy/>
@@ -61,7 +61,7 @@
         <sys_scope display_value="Homelessness">6de0807e13b96600638e74c66144b027</sys_scope>
         <sys_update_name>sys_dictionary_x_ifa_homelessness_agency_draw_entered_in_idis_date</sys_update_name>
         <sys_updated_by>bob.vipondSN</sys_updated_by>
-        <sys_updated_on>2016-09-23 20:55:54</sys_updated_on>
+        <sys_updated_on>2016-09-27 16:38:00</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

@@ -1,15 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Agency Draw" max_length="40" name="x_ifa_homelessness_agency_draw" type="collection">
-        <element label="Agency Award" max_length="32" name="agency_award" reference="x_ifa_homelessness_agency_award" type="reference"/>
+        <element label="Agency Award" max_length="32" name="agency_award" read_only="true" reference="x_ifa_homelessness_agency_award" type="reference"/>
         <element label="Approved In IDIS Date" max_length="40" name="approved_in_idis_date" type="glide_date"/>
-        <element label="Draw Amount" max_length="40" name="draw_amount" type="currency"/>
+        <element label="Draw Amount" mandatory="true" max_length="17" name="draw_amount" type="currency"/>
         <element label="Entered In IDIS Date" max_length="40" name="entered_in_idis_date" type="glide_date"/>
-        <element display="true" label="IDIS Voucher Number" max_length="20" name="idis_voucher_number" type="string"/>
+        <element label="IDIS Voucher Number" max_length="20" name="idis_voucher_number" reference="x_ifa_homelessness_idis_voucher" type="reference"/>
         <element label="Management Approval Date" max_length="40" name="management_approval_date" type="glide_date"/>
-        <element label="Program Fund Year" max_length="32" name="program_fund_year" reference="x_ifa_homelessness_program_fund_year" type="reference"/>
+        <element default="javascript:global.getNextObjNumberPadded();" display="true" label="Draw Number" max_length="40" name="number" read_only="true" type="string"/>
+        <element choice="1" label="Program Fund Year" mandatory="true" max_length="32" name="program_fund_year" reference="x_ifa_homelessness_program_fund_year" reference_qual="javascript:ref_qual_get_program_code();" type="reference" use_dependent_field="true" use_reference_qualifier="advanced">
+            <choice/>
+        </element>
+        <element label="Received By IFA Date" mandatory="true" max_length="40" name="received_by_ifa_date" type="glide_date"/>
         <element label="Sent To Accounting Date" max_length="40" name="sent_to_accounting_date" type="glide_date"/>
-        <element default="0" label="Sequence Number" max_length="40" name="sequence_number" type="integer"/>
+        <element label="Sequence Number" max_length="40" name="sequence_number" read_only="true" type="integer"/>
+        <element label="Contact Email" max_length="100" name="u_contact_email" type="string"/>
+        <element label="Contact Name" max_length="100" name="u_contact_name" type="string"/>
+        <element label="Contact Phone" max_length="20" name="u_contact_phone" type="string"/>
+        <element label="Draw Notes" max_length="4000" name="u_draw_notes" type="journal"/>
+        <element label="Item Total Amount" max_length="40" name="u_item_total_amount" read_only="true" type="currency"/>
+        <element choice="1" label="Reporting Months" mandatory="true" max_length="4000" name="u_reporting_months" type="glide_list">
+            <choice>
+                <element label="January" sequence="1" value="January"/>
+                <element label="February" sequence="2" value="February"/>
+                <element label="March" sequence="3" value="March"/>
+                <element label="April" sequence="4" value="April"/>
+                <element label="May" sequence="5" value="May"/>
+                <element label="June" sequence="6" value="June"/>
+                <element label="July" sequence="7" value="July"/>
+                <element label="August" sequence="8" value="August"/>
+                <element label="September" sequence="9" value="September"/>
+                <element label="October" sequence="10" value="October"/>
+                <element label="November" sequence="11" value="November"/>
+                <element label="December" sequence="12" value="December"/>
+            </choice>
+        </element>
         <index name="index">
             <element name="agency_award"/>
         </index>

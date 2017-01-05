@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Budget Item" max_length="40" name="x_ifa_homelessness_budget_item" type="collection">
-        <element label="Budget Item Desc" max_length="100" name="budget_item_desc" type="string"/>
+        <element display="true" label="Budget Item Desc" max_length="100" name="budget_item_desc" type="string"/>
         <element label="IDIS Activity Id" max_length="20" name="idis_activity_id" type="string"/>
-        <element display="true" label="Program" max_length="32" name="program" reference="x_ifa_homelessness_program" type="reference"/>
+        <element label="Program" max_length="32" name="program" reference="x_ifa_homelessness_program" type="reference"/>
         <index name="index">
             <element name="program"/>
         </index>
